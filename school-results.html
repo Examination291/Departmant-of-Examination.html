@@ -1,12 +1,13 @@
 
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>School Exam Results</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>School Exam Results</title>
+<link href="style.css" rel="stylesheet"/>
+<style>
     .results {
       max-width: 1000px;
       margin: 30px auto;
@@ -182,110 +183,125 @@
 }
 </style>
 <div class="container">
-  <header>
-    <img src="images/header-second.png" alt="Banner Header" style="width:1500px; display:block; margin:0 auto;">
-  </header>
-
-  
+<header>
+<img alt="Banner Header" src="images/header-second.png" style="width:1500px; display:block; margin:0 auto;"/>
+</header>
 <div style="text-align:center; margin: 20px auto;">
-    <img src="images/warning-banner.png" alt="Notice" style="width:1500px;">
-  </div>
-
-  <section class="results">
-    
-    <div class="form-group">
-      <select>
-<option selected disabled>Select Exam</option>
+<img alt="Notice" src="images/warning-banner.png" style="width:1500px;"/>
+</div>
+<section class="results">
+<div class="form-group">
+<select>
+<option disabled="" selected="">Select Exam</option>
 <option>G.C.E (O/L) Examination</option>
 <option>G.C.E (A/L) Examination</option>
-      </select>
-      <select>
-        <option selected disabled>Select the year</option>
-        <option>2023(2024)</option>
-        <option>2024(2025)</option>
-      </select>
-      <select>
-<option selected disabled>Select Method</option>
+</select>
+<select>
+<option disabled="" selected="">Select the year</option>
+<option>2023(2024)</option>
+<option>2024(2025)</option>
+</select>
+<select>
+<option disabled="" selected="">Select Method</option>
 <option>Index</option>
 <option>NIC</option>
-      </select>
-      <input type="text" placeholder="Enter Your Index or NIC" />
-    </div>
-
-    </div>
-
-
+</select>
+<input placeholder="Enter Your Index or NIC" type="text"/>
+</div>
+</section></div>
 <div class="fake-captcha">
-  <input type="checkbox" id="captcha-check">
-  <label for="captcha-check">I am human</label>
-  <div class="captcha-info">
-    <span style="font-size: 12px; color: #555;">hCaptcha</span><br>
-    <a href="#" style="font-size: 10px; color: #777;">Privacy</a> - <a href="#" style="font-size: 10px; color: #777;">Terms</a>
-  </div>
+<input id="captcha-check" type="checkbox"/>
+<label for="captcha-check">I am human</label>
+<div class="captcha-info">
+<span style="font-size: 12px; color: #555;">hCaptcha</span><br/>
+<a href="#" style="font-size: 10px; color: #777;">Privacy</a> - <a href="#" style="font-size: 10px; color: #777;">Terms</a>
 </div>
-
-
-
-
-
-
-
-
-
-
+</div>
 <div class="image-captcha-grid">
-  <p>Select all images with trees</p>
-  <div class="grid">
+<p>Select all images with trees</p>
+<div class="grid">
+<div class="img-wrap" onclick="toggleSelect(this)">
+<img alt="img" src="captcha-img/img3.png"/>
+</div>
+<div class="img-wrap" onclick="toggleSelect(this)">
+<img alt="img" src="captcha-img/img1.png"/>
+</div>
+<div class="img-wrap" onclick="toggleSelect(this)">
+<img alt="img" src="captcha-img/img1.png"/>
+</div>
+<div class="img-wrap" onclick="toggleSelect(this)">
+<img alt="img" src="captcha-img/img1.png"/>
+</div>
+<div class="img-wrap" onclick="toggleSelect(this)">
+<img alt="img" src="captcha-img/img2.png"/>
+</div>
+<div class="img-wrap" onclick="toggleSelect(this)">
+<img alt="img" src="captcha-img/img2.png"/>
+</div>
+<div class="img-wrap" onclick="toggleSelect(this)">
+<img alt="img" src="captcha-img/img3.png"/>
+</div>
+<div class="img-wrap" onclick="toggleSelect(this)">
+<img alt="img" src="captcha-img/img2.png"/>
+</div>
+<div class="img-wrap" onclick="toggleSelect(this)">
+<img alt="img" src="captcha-img/img3.png"/>
+</div>
+</div>
+</div>
+<script>
+  function toggleSelect(el) {
+    el.classList.toggle("selected");
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const submitBtn = document.querySelector(".form-group button.submit-btn");
+    submitBtn.addEventListener("click", function (e) {
+      const selected = document.querySelectorAll(".img-wrap.selected");
+      if (selected.length === 0) {
+        e.preventDefault();
+        alert("Please select at least one image before submitting.");
+      }
+    });
+  });
+</script>
+<div class="form-group" style="margin-top: 25px;">
+
+<form id="resultForm" onsubmit="return validateCaptcha()" action="result-page.html" method="get">
+    <!-- Your existing input fields can be placed here -->
+
     
-    <div class="img-wrap" onclick="toggleSelect(this)">
-      <img src="captcha-img/img3.png" alt="img">
-      
-    </div>
     
-    <div class="img-wrap" onclick="toggleSelect(this)">
-      <img src="captcha-img/img1.png" alt="img">
-      
-    </div>
+
+
+    <button type="submit" style="background-color: #007BFF; color: white; border: none; padding: 8px 16px; border-radius: 4px;">Submit</button>
+</form>
+
+<script>
+  function validateCaptcha() {
+    var input = document.getElementById("captchaInput").value;
+    if (input.trim() === "") {
+      alert("Please enter the captcha code!");
+      return false;
+    }
     
-    <div class="img-wrap" onclick="toggleSelect(this)">
-      <img src="captcha-img/img1.png" alt="img">
-      
-    </div>
     
-    <div class="img-wrap" onclick="toggleSelect(this)">
-      <img src="captcha-img/img1.png" alt="img">
-      
-    </div>
+    }
+    return true;
     
-    <div class="img-wrap" onclick="toggleSelect(this)">
-      <img src="captcha-img/img2.png" alt="img">
-      
-    </div>
-    
-    <div class="img-wrap" onclick="toggleSelect(this)">
-      <img src="captcha-img/img2.png" alt="img">
-      
-    </div>
-    
-    <div class="img-wrap" onclick="toggleSelect(this)">
-      <img src="captcha-img/img3.png" alt="img">
-      
-    </div>
-    
-    <div class="img-wrap" onclick="toggleSelect(this)">
-      <img src="captcha-img/img2.png" alt="img">
-      
-    </div>
-    
-    <div class="img-wrap" onclick="toggleSelect(this)">
-      <img src="captcha-img/img3.png" alt="img">
-      
-    </div>
-    
-  </div>
+  }
+</script>
+
+<button class="reset-btn" style="background-color: #007BFF; color: white; border: none; padding: 8px 16px; border-radius: 4px;" style="background-color: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 4px;" style="background-color: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 6px;">Reset</button>
+</div>
+<div class="action-links">
+<button style="background-color: #007BFF; color: white; border: none; padding: 8px 16px; border-radius: 4px;">Print</button>
+<button style="background-color: #007BFF; color: white; border: none; padding: 8px 16px; border-radius: 4px;">Other Examination Results</button>
 </div>
 
-
+<footer>
+<p>©- </p>
+</footer>
 <script>
   function toggleSelect(el) {
     el.classList.toggle("selected");
@@ -302,46 +318,6 @@
     });
   });
 </script>
-
-
-
-
-
-<div class="form-group" style="margin-top: 25px;">
-      <button class="submit-btn">Submit</button>
-      <button class="reset-btn">Reset</button>
-    </div>
-
-    <div class="action-links">
-      <button>Print</button>
-      <button>Other Examination Results</button>
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy;- </p>
-  </footer>
-
-
-<script>
-  function toggleSelect(el) {
-    el.classList.toggle("selected");
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const submitBtn = document.querySelector(".form-group button.submit-btn");
-    submitBtn.addEventListener("click", function (e) {
-      const selected = document.querySelectorAll(".img-wrap.selected");
-      if (selected.length === 0) {
-        e.preventDefault();
-        alert("Please select at least one image before submitting.");
-      }
-    });
-  });
-</script>
-
-
-
-    <div style="text-align: center; margin-top: 20px;"><img src="img/footer-extra.png" alt="Footer Banner" style="max-width: 100%; height: auto;"></div>
-</div></body>
+<div style="text-align: center; margin-top: 20px;"><img alt="Footer Banner" src="img/footer-extra.png" style="max-width: 100%; height: auto;"/></div>
+</body>
 </html>
